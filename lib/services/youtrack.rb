@@ -74,8 +74,7 @@ class Service::YouTRACK < Service::Base
     res = http_post "#{config[:url]}/rest/user/login", {:login => config[:username], :password => config[:password]}
     # I tries too add faraday cookie middleware without success, do it manually
     http.headers['Cookie'] = res.headers['set-cookie']
-    ret = res.status == 200
-    ret
+    res.status == 200
   end
 
 end
